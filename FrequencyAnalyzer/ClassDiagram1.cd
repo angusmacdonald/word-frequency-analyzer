@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Comment CommentText="The Ribbon class is the entry point into the add-in. This class calls the Worker Manager class which creates the task pane and asynchronously starts the computation running.">
+    <Position X="2.677" Y="1.698" Height="1.521" Width="1.7" />
+  </Comment>
+  <Comment CommentText="The frequency calculator (executing asynchronously) continually updates the progress bar in the task pane and places the result of the frequency count in the ResultContainer class.">
+    <Position X="9.052" Y="4.458" Height="1.792" Width="1.7" />
+  </Comment>
+  <Comment CommentText="IgnoreList is used to find, load and save the ignore list. It also contains a default ignore list.">
+    <Position X="8.333" Y="1.479" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="FrequencyAnalyzer.FrequencyCalculation">
+    <Position X="7.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAEAAABAAgQIAAACAAAAAAAAA=</HashCode>
+      <FileName>FrequencyCalculation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrequencyAnalyzer.IgnoreList">
+    <Position X="10.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAEAAAAAAAACAAAAAAACAAIAAAAAAAAAAQA=</HashCode>
+      <FileName>IgnoreList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrequencyAnalyzer.ResultContainer">
+    <Position X="11" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAACAABAAgEAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ResultContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrequencyAnalyzer.RibbonEntry" Collapsed="true">
+    <Position X="0.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RABQAABAACAQAAAAEACAAAACAAAAAQAAAAIQAAAACAA=</HashCode>
+      <FileName>Ribbon1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrequencyAnalyzer.ThisRibbonCollection" Collapsed="true">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrequencyAnalyzer.WorkerManager">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAACAAAACAEAAACAAAAAAAQCgAAAAAEAAAAABAA=</HashCode>
+      <FileName>WorkerManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
