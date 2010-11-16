@@ -1,0 +1,8 @@
+Word frequency counter. Designed for Office 2010. The source for this project was created in Visual Studio 2010, but it should compile in Visual Studio 2007 as well.
+
+More information here: http://blogs.cs.st-andrews.ac.uk/angus/2008/11/word-2007-add-in-word-frequency-counter/
+
+Documentation is contained within the project. The following points summarise its structure:
+- The Ribbon class is the entry point into the add-in. This class calls the Worker Manager class which creates the task pane and asynchronously starts the computation running.
+- The frequency calculator (executing asynchronously) continually updates the progress bar in the task pane and places the result of the frequency count in the ResultContainer class.
+- IgnoreList is used to find, load and save the ignore list. It also contains a default ignore list.
