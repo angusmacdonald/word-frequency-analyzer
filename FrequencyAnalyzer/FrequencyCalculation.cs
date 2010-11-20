@@ -21,6 +21,8 @@ namespace FrequencyAnalyzer
         int start_word;
         int end_word;
 
+        bool ignoreNumbers = false; // whether the program is to ignore numbers.
+       
         /// <summary>
         /// Whether the result is going to be saved or printed out onscreen.
         /// </summary>
@@ -45,6 +47,7 @@ namespace FrequencyAnalyzer
             this.tosave = tosave;
 
             punctuation = IgnoreList.getIgnoreList();
+            this.ignoreNumbers = IgnoreList.ignoringNumbers();
 
         }
 
@@ -70,8 +73,9 @@ namespace FrequencyAnalyzer
                     String word = words[i].Text.Trim();
                     word = word.ToLower();
 
-                    //If the word is a punctuation mark, ignore it.
-                    if (!punctuation.Contains(word))
+                    //If the word is a punctuation mark, ignore it. If we are ignoring numbers, check whether this is a number.
+
+                    if (isToBeCounted(word))
                     {
                         if (frequencies.ContainsKey(word))
                         {
@@ -112,5 +116,34 @@ namespace FrequencyAnalyzer
                 return null;
             }
         }
+
+        /// <summary>
+        /// Whether the given word is to be counted as part of the word frequencies.
+        /// 
+        /// It will be counted if it is not part of the ignore list and (if ignoring numbers is enabled) if
+        /// it is not a number.
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns>true if the word is to be counted.</returns>
+        private bool isToBeCounted(String word)
+        {
+            return !punctuation.Contains(word) && (!isNumeric(word) || !ignoreNumbers);
+        }
+
+        /// <summary>
+        /// http://www.codeproject.com/KB/cs/IsNumeric.aspx
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="NumberStyle"></param>
+        /// <returns></returns>
+        public bool isNumeric(string val)
+        {
+            Double tempDouble;
+
+            return Double.TryParse(val, System.Globalization.NumberStyles.Any,
+                System.Globalization.CultureInfo.CurrentCulture, out tempDouble);
+        }
     }
+
+  
 }

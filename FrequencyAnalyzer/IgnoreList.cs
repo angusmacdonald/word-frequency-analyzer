@@ -13,6 +13,7 @@ namespace FrequencyAnalyzer
     {
 
         private static string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + Properties.Settings.Default.ignoreListLocation;
+        private static bool ignoreNumbers = false;
 
 
         /// <summary>
@@ -44,13 +45,14 @@ namespace FrequencyAnalyzer
 
         private static HashSet<String> readIgnoreList()
         {
-            HashSet<String> ignoredWords = new HashSet<string>();
+            HashSet<String> ignoredWords = createInitialIgnoreList();
 
             foreach (string line in File.ReadAllLines(path))
             {
                 if (!string.IsNullOrEmpty(line) && (!line.StartsWith("#")))
                 {
                     ignoredWords.Add(line);
+           
                 }
             }
 
@@ -65,15 +67,20 @@ namespace FrequencyAnalyzer
 
                 HashSet<String> standardIgnoredCharacters = createInitialIgnoreList();
 
-                File.WriteAllLines(path, standardIgnoredCharacters.ToArray<String>(), Encoding.ASCII);
+                File.WriteAllText(path, "", Encoding.ASCII);
 
             }
         }
 
+        /// <summary>
+        /// These are the default characters that are always escaped. Users can specify others in the ignore list.
+        /// </summary>
+        /// <returns></returns>
         private static HashSet<String> createInitialIgnoreList()
         {
             HashSet<String> standardIgnoredCharacters = new HashSet<String>();
             standardIgnoredCharacters.Add("");
+            standardIgnoredCharacters.Add(" ");
             standardIgnoredCharacters.Add(".");
             standardIgnoredCharacters.Add(",");
             standardIgnoredCharacters.Add(";");
@@ -96,6 +103,22 @@ namespace FrequencyAnalyzer
             standardIgnoredCharacters.Add("{");
             standardIgnoredCharacters.Add("}");
             standardIgnoredCharacters.Add("'");
+            standardIgnoredCharacters.Add("?)");
+            standardIgnoredCharacters.Add("!)");
+            standardIgnoredCharacters.Add(".)");
+            standardIgnoredCharacters.Add("“");
+            standardIgnoredCharacters.Add("”");
+
+            standardIgnoredCharacters.Add(".”");
+            standardIgnoredCharacters.Add("?”");
+            standardIgnoredCharacters.Add(".“");
+            standardIgnoredCharacters.Add("?“");
+            standardIgnoredCharacters.Add(".");
+            standardIgnoredCharacters.Add("?\"");
+            standardIgnoredCharacters.Add(".\"");
+            standardIgnoredCharacters.Add("!\"");
+            standardIgnoredCharacters.Add("?!");
+            
             standardIgnoredCharacters.Add("!!");
             standardIgnoredCharacters.Add("].");
             standardIgnoredCharacters.Add("+!!");
@@ -104,16 +127,36 @@ namespace FrequencyAnalyzer
             standardIgnoredCharacters.Add("...");
             standardIgnoredCharacters.Add("+");
             standardIgnoredCharacters.Add("-");
+            standardIgnoredCharacters.Add("–");
             standardIgnoredCharacters.Add("â€");
             standardIgnoredCharacters.Add("â€œ");
             standardIgnoredCharacters.Add("â€¦)");
             standardIgnoredCharacters.Add("â€˜˜");
+            standardIgnoredCharacters.Add("\a");
             return standardIgnoredCharacters;
         }
 
         internal static string getIgnoreListFilePath()
         {
             return path;
+        }
+
+        /// <summary>
+        /// Whether we are to ignore numbers in the frequency counting.
+        /// </summary>
+        /// <returns></returns>
+        internal static bool ignoringNumbers()
+        {
+          
+            foreach (string line in File.ReadAllLines(path))
+            {
+                if (!string.IsNullOrEmpty(line) && (line.StartsWith("<numbers>")))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

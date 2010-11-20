@@ -39,10 +39,10 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <VSTO_TrustAssembliesLocation>true</VSTO_TrustAssembliesLocation>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>C:\Users\angus\Desktop\FrequencyAnalyzer\</PublishUrl>
+    <PublishUrl>C:\Users\Angus\Documents\Visual Studio 2010\Projects\WordFrequency\Build\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>2.0.0.0</ApplicationVersion>
+    <ApplicationVersion>2.1.0.0</ApplicationVersion>
     <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -229,7 +229,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="OverviewOfAddIn.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -263,7 +263,6 @@
     </Compile>
     <Compile Include="WorkerManager.cs" />
     <AppDesigner Include="Properties\" />
-    <None Include="XMLTest.xs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FrequencyAnalyzer_TemporaryKey.pfx" />
